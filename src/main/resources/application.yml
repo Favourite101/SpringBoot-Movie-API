@@ -14,10 +14,22 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-#  security:
-#    user:
-#      name: admin
-#      password: admin
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "ofavourmartins@gmail.com"
+    password: "pjuexmtjdbofdyzq"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          debug: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
 
 project:
   poster: posters/
@@ -26,3 +38,12 @@ base:
   url: "http://localhost:8080"
 
 debug: true
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        mail: DEBUG
+    com.sun.mail: DEBUG
+    jakarta.mail: DEBUG
