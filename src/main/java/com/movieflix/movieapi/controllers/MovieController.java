@@ -51,6 +51,7 @@ public class MovieController {
         return ResponseEntity.ok(movieService.getAllMovies());
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/update/{movieId}")
     public ResponseEntity<MovieDto> updateMovieHandler(@PathVariable Integer movieId, @RequestPart String movieDto, @RequestPart MultipartFile file) throws IOException {
 
@@ -61,6 +62,7 @@ public class MovieController {
         return ResponseEntity.ok(movieService.updateMovie(movieId, dto, file));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{movieId}")
     public ResponseEntity<String> deleteMovieHandler(@PathVariable Integer movieId) throws IOException {
         return ResponseEntity.ok(movieService.deleteMovie(movieId));
